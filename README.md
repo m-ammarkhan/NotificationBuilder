@@ -1,13 +1,8 @@
 # NotificationBuilder
-
-Design Task
-
-# Description
-
-This task was assigned in the second week of my internship. Following are the requirnments of this task:
+ This design task was assigned in the second week of my internship. Following are the requirnments of this task:
 
 # Introduction
-This challenge is used to check your knowledge with modern web technologies with focus on:
+ This challenge is used to check your knowledge with modern web technologies with focus on:
     ● HTML 5
     ● CSS 3
     ● JavaScript (ES 5 / 6)
@@ -17,13 +12,9 @@ This challenge is used to check your knowledge with modern web technologies with
     ● NodeJs/Express
     ● MongoDB(Preferable), Firebase
 
-# Coding challenge
-    Show us your skills - A coding challenge with a broad range, including design, development, and testing.
-    Please keep in mind that some of the requirements are just NICE TO HAVE - try to finish the tasks you do "as good as possible" instead of "starting as many as possible".
-
 # Task Description
-    The goal of this coding challenge is to create an Angular Library Project which can be used to show notification messages within a SPA. Those notifications should be used to display information which gives visual feedback to the user, but does not disturb them at the current work. One example would be a chat application, where the notification module displays a slight notification that someone has logged in. The module should be encapsulated, thus it could be shared across multiple
-    projects. The final result should be included into a nice example page, where the features of the notification module can be tested in.
+ The goal of this coding challenge is to create an Angular Library Project which can be used to show notification messages within a SPA. Those notifications should be used to display information which gives visual feedback to the user, but does not disturb them at the current work. One example would be a chat application, where the notification module displays a slight notification that someone has logged in. The module should be encapsulated, thus it could be shared across multiple projects. The final result should be included into a nice example page, where the features of the notification module can be tested in.
+ 
     Create a standalone prototype based on Angular, HTML and CSS. Write a simple SPA where the notification module is included and can be tested in. The prototype should be based on:
         ● Package/Dependency managers - like NPM/bower
         ● and others if you like to have your own toolkit.
@@ -57,6 +48,7 @@ This challenge is used to check your knowledge with modern web technologies with
             o Write unit tests to check the functionality of your application. Reduce the test cases to the main services/controllers. Ensure that the test coverage within these is about 80%. Try to use test tools/runners like Jasmine and Karma.
         ● All the design decisions/explanatory parts of the solution should be part of a "README.md" file on the GitHub
         project. This should be a private repository that is shared only with ‘xgrid-all’ user as a contributor.
+
     Other Requirements (Design Decisions)
         ● The notifications with the category "info" should be closed automatically after 90 seconds.
         ● The notification module should display max 5 notifications at the same time.
