@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <h1>Add Notification</h1>
+
+      <form
+        (ngSubmit)="onSubmit()"
+        #form
+        style="width: 100%"
+        class="example-form mb-5"
+      >
+        <hr />
+        <p>
+          <small *ngIf="formValid && titleValid"
+            ><b>This field is required</b></small
+          >
+          <mat-form-field style="width: 100%" appearance="outline">
+            <mat-label>Notification Title</mat-label>
+            <input
+              matInput
+              required
+              (ngModelChange)="checkit()"
+              placeholder="Enter the notification Title"
+              type="text"
+              [(ngModel)]="notification.title"
+              name="title"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field style="width: 100%" appearance="outline">
+            <mat-label>Notification Type</mat-label>
+            <mat-select [(value)]="notification.type">
+              <mat-option value="info"> Info </mat-option>
+              <mat-option value="error"> Error </mat-option>
+              <mat-option value="warning"> Warning </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <small *ngIf="formValid && msgValid"
+            ><b>This field is required</b></small
+          >
+          <mat-form-field style="width: 100%" appearance="outline">
+            <mat-label>Notification Message</mat-label>
+            <input
+              matInput
+              required
+              (ngModelChange)="checkit()"
+              placeholder="Enter the notification message"
+              type="text"
+              [(ngModel)]="notification.msg"
+              name="msg"
+            />
+          </mat-form-field>
+        </p>
+
+        <p>
+          <button
+            type="submit"
+            style="width: 100%"
+            mat-raised-button
+            color="primary"
+          >
+            Add
+          </button>
+        </p>
+      </form>
+    </div>
+    <div class="col-5">
+      <h1>Entered data</h1>
+      <hr />
+      <b>Title:</b> {{ notification.title }}<br />
+      <b>Message:</b> {{ notification.msg }}<br />
+      <b>Type:</b> {{ notification.type }}<br />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "notificationmanagement-b4e0e": {
+      "hosting": {
+        "notification-app": [
+          "notificationmanagement-b4e0e"
+        ]
+      }
+    }
+  }
+}

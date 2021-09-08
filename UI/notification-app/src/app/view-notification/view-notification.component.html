@@ -1,0 +1,62 @@
+<div
+  *ngIf="!checkFetch"
+  style="margin-top: 200px"
+  class="d-flex justify-content-center"
+>
+  <div class="loader"></div>
+</div>
+<div *ngIf="checkFetch" class="container">
+  <h1>Notifications</h1>
+  <hr />
+  <div *ngIf="notifications.length == 0">
+    <h2 style="color: tomato">No Notifications Added Yet</h2>
+    <br><br><br><br><br>
+  </div>
+  <div *ngIf="notifications.length > 0" class="row">
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let notifcation of notifications">
+      <mat-card appBorderChangeOnHover class="shadow mb-5">
+        <mat-card-title style="text-align: center">
+          {{ notifcation.title }}</mat-card-title
+        >
+        <hr />
+        <mat-card-content>
+          <b>Id: </b>{{ notifcation._id }}<br />
+          <b>Type:</b> {{ notifcation.type }}<br />
+          <b>Message:</b> {{ notifcation.msg }}<br />
+
+          <div class="row mt-2">
+            <div class="col-5">
+              <button
+                mat-raised-button
+                color="primary"
+                class="col-12"
+                [routerLink]="['/notificationEdit', notifcation._id]"
+              >
+                Edit
+              </button>
+            </div>
+            <div class="col-5">
+              <button
+                (click)="deleteProd(notifcation._id)"
+                mat-raised-button
+                color="warn"
+                class="col-12"
+              >
+                Delete
+              </button>
+            </div>
+            <div class="col-2">
+              <button
+                mat-mini-fab
+                aria-label="Example icon button with a home icon"
+                (click)="showNotification(notifcation)"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

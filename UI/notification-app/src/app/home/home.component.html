@@ -1,0 +1,76 @@
+<div class="container">
+  <h1>
+    App status is {{ status | shorten: 3 }}<br />
+    {{ "1,2,3,4" | shorten: 3 }} -An Example of Custom Pipes-
+  </h1>
+  <br />(String Interpolation - Event Binding - Property Binding) <br />
+  <hr />
+  <div style="width: max-content">
+    <button
+      [disabled]="showOn"
+      (click)="onit()"
+      mat-raised-button
+      color="primary"
+    >
+      On
+    </button>
+    <button
+      [disabled]="showOff"
+      (click)="offit()"
+      mat-raised-button
+      color="primary"
+    >
+      Off
+    </button>
+    <br />
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-3">
+          <button type="button" class="btn btn-success" (click)="onSuccess()">
+            Success
+          </button>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-info col-12" (click)="onInfo()">
+            Info
+          </button>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-warning" (click)="onWarning()">
+            Warning
+          </button>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-danger" (click)="onError()">
+            Error
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div
+    style="
+      text-align: center;
+      color: #2c3e50;
+      height: 80px;
+      background-color: mediumturquoise;
+      border-radius: 20px;
+    "
+  >
+    <p [@state]="state" style="font-size: 80px">Welcome to our App</p>
+  </div>
+  <!-- <div style="width:100px;height:100px" [@wildState]="wildState"> -->
+  <br /><br />
+</div>
+
+<!-- <button [routerLink]="['/productDetail', 'Playstation']" mat-raised-button color="primary">go</button> -->
+<!-- <div class="row">
+          <div class="col-6">
+              <app-add-product (prodToEmit)="handleResults($event)"></app-add-product>
+          </div>
+          <div class="col-6">
+              <app-view-product [products]="products"></app-view-product>
+          </div>
+  
+      </div> -->

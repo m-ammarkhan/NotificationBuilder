@@ -1,0 +1,31 @@
+
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+        <br><br>
+        <h1>Sign up</h1>
+        
+        <form style="width: 100%;" class="example-form mb-5">
+            <hr>
+            <p>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter the Email" type="email" [(ngModel)]="user.username" name="username">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Enter the Password" type="password" [(ngModel)]="user.password" name="password">
+                </mat-form-field>
+            </p>
+            <p>
+                <button type="submit" (click)="onSignup()" style="width: 100%;" mat-raised-button color="primary">Sign up</button>
+            </p>
+
+        </form>
+    </div>
+</div>
+

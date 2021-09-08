@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand"><p style="font-size: 25px; font-weight: bolder; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin-top: 2px;">Notification<b style="color: mediumturquoise; font-style: italic;">Builder</b></p></a>
+    <button
+      class="navbar-toggler collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor01"
+      aria-controls="navbarColor01"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a style="font-weight: 400;"
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="user.isLoggedin">
+          <a style="font-weight: 400;" class="nav-link" routerLink="/addNotification" routerLinkActive="active"
+            >Add Notification</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="user.isLoggedin">
+          <a style="font-weight: 400;"
+            class="nav-link"
+            routerLink="/viewNotifications"
+            routerLinkActive="active"
+            >View Notifications</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" *ngIf="!user.isLoggedin">
+            <a style="font-weight: 400;" class="nav-link" routerLink="/signin" routerLinkActive="active"
+              >Sign in</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="user.isLoggedin">
+            <a style="font-weight: 400; font-size: large; font-weight: bold; color: mediumturquoise;" class="nav-link"> {{user.username}}</a>
+          </li>
+          <li class="nav-item" *ngIf="!user.isLoggedin">
+            <a style="font-weight: 400;" class="nav-link" routerLink="/signup" routerLinkActive="active"
+              >Sign up</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="user.isLoggedin">
+            <a class="nav-link" role="button" (click)="logout()"><mat-icon>power_settings_new</mat-icon></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<br />
+<router-outlet></router-outlet>
