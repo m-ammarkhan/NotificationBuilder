@@ -2,19 +2,19 @@
  This design task was assigned in the second week of my internship. Following are the requirnments of this task:
 
 # Introduction
- This challenge is used to check your knowledge with modern web technologies with focus on:
-    ● HTML 5
-    ● CSS 3
-    ● JavaScript (ES 5 / 6)
-    ● Angular2+
-    ● Observables & RxJS
-    ● State Management (NgRx)
-    ● NodeJs/Express
-    ● MongoDB(Preferable), Firebase
+    This challenge is used to check your knowledge with modern web technologies with focus on:
+        ● HTML 5
+        ● CSS 3
+        ● JavaScript (ES 5 / 6)
+        ● Angular2+
+        ● Observables & RxJS
+        ● State Management (NgRx)
+        ● NodeJs/Express
+        ● MongoDB(Preferable), Firebase
 
 # Task Description
  The goal of this coding challenge is to create an Angular Library Project which can be used to show notification messages within a SPA. Those notifications should be used to display information which gives visual feedback to the user, but does not disturb them at the current work. One example would be a chat application, where the notification module displays a slight notification that someone has logged in. The module should be encapsulated, thus it could be shared across multiple projects. The final result should be included into a nice example page, where the features of the notification module can be tested in.
- 
+
     Create a standalone prototype based on Angular, HTML and CSS. Write a simple SPA where the notification module is included and can be tested in. The prototype should be based on:
         ● Package/Dependency managers - like NPM/bower
         ● and others if you like to have your own toolkit.
