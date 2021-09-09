@@ -14,12 +14,11 @@ import { AddNotificationComponent } from './add-notification/add-notification.co
 import { BorderChangeOnHoverDirective } from './directives/border-change-on-hover.directive';
 import { ViewNotificationComponent } from './view-notification/view-notification.component';
 import { NotificationEditComponent } from './view-notification/product-edit/notification-edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
 
 const config = {
   apiKey: "AIzaSyAKlLeEtJN1xZoHQ7--0Pe4hFj7JLTGD_w",
@@ -43,8 +42,7 @@ const config = {
     ViewNotificationComponent,
     NotificationEditComponent,
     SignupComponent,
-    SigninComponent
-    
+    SigninComponent 
   ],
   imports: [
     BrowserModule,
@@ -55,7 +53,6 @@ const config = {
     AngularFireModule.initializeApp(config),
     ReactiveFormsModule,
     HttpClientModule
-    
   ],
   providers: [AuthService,HttpClient],
   bootstrap: [AppComponent]

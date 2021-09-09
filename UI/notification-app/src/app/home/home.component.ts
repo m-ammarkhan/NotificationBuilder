@@ -1,6 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NotificationToastService } from 'notification-toastr';
 
 @Component({
@@ -28,72 +27,78 @@ import { NotificationToastService } from 'notification-toastr';
       )),
       transition('normal => highlighted', animate(800)),
       transition('highlighted => normal', animate(1000)),
-      //transition('highlighted => normal',animate(800))
     ])
   ]
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router,private notificationService: NotificationToastService) { }
+  /**
+   * This is the constructor of HomeComponent
+   * @param {NotificationToastService} notificationService is injected to use notification-toast to notify user.
+   */
+  constructor(private notificationService: NotificationToastService) { }
 
   ngOnInit(): void {
-    if (localStorage['is_signedin'] == false) {
-      this.router.navigate(['/signin']);
-    }
   }
-  // myObservable! :Observable<Number[]>;
 
-
-
-  // Execute with the observer object
-
-
-  // Create observer object
   state = 'normal';
   wildState = 'normal2';
   showOn = false;
   showOff = true;
   status = "";
-  changeStatus(): void {
 
-    if (this.status == "ON") {
-
-      this.status = "OFF";
-
-    }
-    if (this.status == "OFF") {
-      this.status = "ON";
-    }
-
-
-
-  }
+  /**
+   * This funtion is bind to an event which is triggered when user presses ON button.
+   * It changes the status to ON.
+   * It changes showOn from false to true.
+   * It changes showOff from true to false.
+   */
   onit(): void {
     this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal';
     this.status = "ON";
     this.showOn = true;
     this.showOff = false;
-
   }
+
+  /**
+   * This funtion is bind to an event which is triggered when user presses OFF button.
+   * It changes the status to OFF.
+   * It changes showOff from false to true.
+   * It changes showOn from true to false.
+   */
   offit(): void {
     this.state == 'highlighted' ? this.state = 'normal' : this.state = 'highlighted';
-    //this.wildState='shark';
     this.status = "OFF";
     this.showOff = true;
     this.showOn = false;
+  }
 
+  /**
+   * It triggers the notification of type Success.
+   */
+  onSuccess() {
+    this.notificationService.sendSuccess("Success Type", "Showing Success Message");
   }
-  onSuccess(){
-    this.notificationService.sendSuccess("By","Ammar");
+
+  /**
+   * It triggers the notification of type Info.
+   */
+  onInfo() {
+    this.notificationService.sendInfo("Info Type", "Showing Info Message");
   }
-  onInfo(){
-    this.notificationService.sendInfo("By","Ammar");
+
+  /**
+   * It triggers the notification of type Warning.
+   */
+  onWarning() {
+    this.notificationService.sendWarning("Warning Type", "Showing Warning Message");
   }
-  onWarning(){
-    this.notificationService.sendWarning("By","Ammar");
-  }
-  onError(){
-    this.notificationService.sendError("By","Ammar");
+
+  /**
+   * It triggers the notification of type Error.
+   */
+  onError() {
+    this.notificationService.sendError("Error Type", "Showing Error Message");
   }
 
 }

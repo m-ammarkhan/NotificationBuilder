@@ -12,20 +12,29 @@ import { Notification } from './notification.model';
 })
 export class DataStoreService {
 
-
     REST_API: string = 'http://localhost:8080/api/notifications';
     //httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
+    /**
+     * This is the constructor of DataStoreService.
+     * @param {NotificationToastService} toastr is injected to use notification-toast to notify user.
+     * @param {AngularFirestore} firestore is injected 
+     * @param {Router} route is injected to navigate programmatically.
+     * @param {AuthService} auth is injected to use its getUserInfo().
+     * @param {HttpClient} httpClient is injected to make http calls.
+     */
     constructor(private toastr: NotificationToastService, private firestore: AngularFirestore, private route: Router, private auth: AuthService, private httpClient: HttpClient) {
         this.auth.getUserInfo().subscribe((user: User) => {
-
             this.user = user;
-
-
         });
     }
 
     user = new User("", "", "", false);
-    username = "";
+
+    /**
+     * it makes post call to the API to add provided Notification
+     * @param {Notification} notification is passed to post it.
+     */
     addToList(notification: Notification) {
         notification.username = this.user.username;
         this.httpClient.post(this.REST_API, notification).subscribe(
@@ -37,41 +46,31 @@ export class DataStoreService {
                 this.toastr.sendError('Notification Not Added!', 'Error');
             }
         );
-        // this.firestore.collection("notification").add({
-        //     title: notification.title,
-        //     type: notification.type,
-        //     msg: notification.msg,
-        //     show: notification.show,
-        //     timeout: notification.timeout,
-        //     username: this.user.username
-
-        // });
-        //
     }
 
+    /**
+     * It gets the list of notifications from the Api which are added by the current user.
+     * @returns the list of notifications.
+     */
     getListItems() {
-        // return this.firestore
-        //     .collection("notification").get();
-        return this.httpClient.get(this.REST_API+"/user/"+this.user.username);
-        //return this.firestore.collection("notification", ref=>ref.where('username', '==', this.user.username)).get();
+        return this.httpClient.get(this.REST_API + "/user/" + this.user.username);
+
     }
 
+    /**
+     * It gets the notification having the provided id.
+     * @param {any} id is passed to search the notication having this id. 
+     * @returns the notification having the provided id.
+     */
     getItemByID(id: any) {
         return this.httpClient.get(this.REST_API + "/" + id);
-        //this.firestore.collection('notification').doc(id).get();
     }
 
+    /**
+     * It makes the delete request to an API. To delete the notifiction having the provided id.
+     * @param {any} id is passed to search the notification having this id.
+     */
     deleteItemByID(id: any) {
-        // this.firestore.collection('notification').doc(id).delete().then(
-        //     (res) => {
-        //         this.toastr.sendSuccess('Record Deleted Successfully!', 'Success');
-        //         window.location.reload();
-        //     }
-        // ).catch(
-        //     (err) => {
-        //         this.toastr.sendError('Record Deletion UnSuccessfull!', 'Error');
-        //     }
-        // );
         this.httpClient.delete(this.REST_API + "/" + id).subscribe(
             (res) => {
                 this.toastr.sendSuccess('Record Deleted Successfully!', 'Success');
@@ -79,7 +78,6 @@ export class DataStoreService {
                 this.route.routeReuseStrategy.shouldReuseRoute = () => false;
                 this.route.onSameUrlNavigation = 'reload';
                 this.route.navigate([currentUrl]);
-                //console.log(res);
             },
             (err) => {
                 this.toastr.sendError('Record Deletion UnSuccessfull!', 'Error');
@@ -87,8 +85,12 @@ export class DataStoreService {
         );
     }
 
+    /**
+     * It makes the PUT request to an API. To Update the notifiction having the provided id with the provided data.
+     * @param {any} id is passed to search the notification having this id.
+     * @param {Notification} notification is passed to update the notification with these notification details.
+     */
     updateItemById(id: any, notification: Notification) {
-
         this.httpClient.put(this.REST_API + "/" + id, notification).subscribe(
             (res) => {
                 this.toastr.sendSuccess('Record Updated Successfully!', 'Success');
@@ -99,17 +101,5 @@ export class DataStoreService {
                 this.toastr.sendError('Record Updation UnSuccessfull!', 'Error');
             }
         );
-        // this.firestore.collection("notification").doc(id).update({
-        //     title: notification.title,
-        //     type: notification.type,
-        //     msg: notification.msg,
-        //     show: notification.show,
-        //     timeout: notification.timeout,
-        //     username: notification.username
-        // });
-        // this.toastr.sendSuccess('Record Updated Successfully!', 'Success');
-        // this.route.navigate(['/viewNotifications']);
-        // window.scroll(0, 0);
-
     }
 }

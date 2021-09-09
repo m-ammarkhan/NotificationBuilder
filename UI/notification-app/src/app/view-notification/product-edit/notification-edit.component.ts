@@ -10,13 +10,25 @@ import { Notification } from 'src/app/notification.model';
   styleUrls: ['./notification-edit.component.css']
 })
 export class NotificationEditComponent implements OnInit {
-  notification : any
+
+  notification : any;
+
+  /**
+   * This is the constructor of NotificationEditComponent.
+   * @param {ActivatedRoute} route is injected to extract id from the Active route.
+   * @param {DataStoreService} dataService is injected to use its updateItemById().
+   */
   constructor(private route: ActivatedRoute,private dataService: DataStoreService) { }
+
   updateForm = new FormGroup({
     title: new FormControl(''),
     msg: new FormControl(''),
     type: new FormControl(''),
   });
+
+  /**
+   * onInit; extracts the notification id from the route. And gets that notification.
+   */
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const notificationIdFromRoute = String(routeParams.get('notificationId'));
@@ -30,10 +42,12 @@ export class NotificationEditComponent implements OnInit {
         timeout: new FormControl(this.notification.timeout),
         username:new FormControl(this.notification.username)
       });
-      console.log(this.notification);
     });
-    
   }
+
+  /**
+   * It calls the updateItemById() with the provided id and updated data as arguments.
+   */
   onSubmit() {
     this.dataService.updateItemById(this.notification._id,this.updateForm.value);
   }
