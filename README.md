@@ -3,7 +3,7 @@
 
 # Requirnments
     Created a standalone prototype based on Angular, HTML and CSS. Write a simple SPA where the notification module is included and can be tested in. The prototype is based on:
-        ● Package/Dependency managers **(NPM)**.
+        ● Package/Dependency managers **NPM**.
 
     The prototype includes the following concepts/features:
         ● Observables & RxJS 
